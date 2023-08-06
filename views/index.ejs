@@ -25,11 +25,24 @@
         <h2>Pick your favourite taco ingredient 👆</h2>
         <% } %>
       <h3>Ingredients: </h3>
-    <ul id="ingredientsList">
-      <li>Protein name, protein preparation</li>
-      <li>Salsa name</li>
-      <li>Every other topping</li>
-    </ul>
+      <% if(locals.choice){ %>
+          <% if(choice === "chicken"){ %>
+            <ul>
+              <li><%= data[0].ingredients.protein.name%>, <%=data[0].ingredients.protein.preparation%></li>
+              <li><%= data[0].ingredients.salsa.name%></li>
+              <% for(let i = 0; i < 4; i++){ %>
+                <li><%= data[0].ingredients.toppings[i].quantity%> of <%= data[0].ingredients.toppings[i].name%></li>
+                <% } %>
+            </ul>
+            <% } %>
+        <% }else { %>
+          <ul id="ingredientsList">
+            <li>Protein name, protein preparation</li>
+            <li>Salsa name</li>
+            <li>Every other topping</li>
+          </ul>
+          <% } %>
+    
 
 
 
